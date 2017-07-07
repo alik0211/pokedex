@@ -1,3 +1,7 @@
+.thumbnail h3 {
+  text-align: center;
+}
+
 .user-input {
   margin-top: 15px;
   margin-bottom: 15px;
@@ -7,7 +11,16 @@
   border: 1px solid #ddd;
 }
 
-.break {
+.user-list tr {
+  cursor: pointer;
+  transition: background-color .1s ease;
+}
+
+.table-striped > tbody > tr:hover {
+  background-color: #eee;
+}
+
+.pagination .break {
   position: relative;
   float: left;
   padding: 6px 12px;

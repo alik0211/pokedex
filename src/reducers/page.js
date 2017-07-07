@@ -1,11 +1,14 @@
 import {
   REQUEST_POKEMONS,
-  RECEIVE_POKEMONS
+  RECEIVE_POKEMONS,
+  REQUEST_SELECTED_POKEMON,
+  RECEIVE_SELECTED_POKEMON
 } from '../constants/Pokemon'
 
 const initialState = {
   isFetched: false,
-  pokemons: []
+  pokemons: [],
+  selectedPokemon: null
 }
 
 export default function pokemon(state = initialState, action) {
@@ -22,6 +25,15 @@ export default function pokemon(state = initialState, action) {
         ...state,
         pokemons: action.pokemons,
         isFetched: false
+      }
+
+    case REQUEST_SELECTED_POKEMON:
+      return state
+
+    case RECEIVE_SELECTED_POKEMON:
+      return {
+        ...state,
+        selectedPokemon: action.selectedPokemon
       }
 
     default:

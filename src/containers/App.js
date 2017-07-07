@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ReactPaginate from 'react-paginate'
 import Search from '../components/Search'
+import SelectPokemon from '../components/SelectPokemon'
 import Pokemon from '../components/Pokemon'
 import * as pageActions from '../actions/PageActions'
 
@@ -12,22 +13,29 @@ class App extends Component {
 
     this.state = {
       term: '',
-      offset: 0
+      offset: 0,
+      selectedPokemon: 1
     }
 
-    this.changeSearchTerm = this.changeSearchTerm.bind(this)
+    this.handleSearchTerm = this.handleSearchTerm.bind(this)
     this.handlePageChange = this.handlePageChange.bind(this)
+    this.handleSelectedPokemon = this.handleSelectedPokemon.bind(this)
   }
 
   fetchPokemons() {
     this.props.pageActions.fetchPokemons(this.state.offset)
   }
 
-  componentDidMount() {
-    this.fetchPokemons()
+  fetchSelectedPokemon() {
+    this.props.pageActions.fetchSelectedPokemon(this.state.selectedPokemon)
   }
 
-  changeSearchTerm(e) {
+  componentDidMount() {
+    this.fetchPokemons()
+    this.fetchSelectedPokemon()
+  }
+
+  handleSearchTerm(e) {
     this.setState({ term: e.target.value })
   }
 
@@ -37,8 +45,14 @@ class App extends Component {
     })
   }
 
+  handleSelectedPokemon(id) {
+    this.setState({ selectedPokemon: id }, () => {
+      this.fetchSelectedPokemon()
+    })
+  }
+
   render() {
-    let { pokemons } = this.props.page
+    let { pokemons, selectedPokemon } = this.props.page
     let searchString = this.state.term.trim().toLowerCase()
 
     if (searchString.length > 0) {
@@ -49,13 +63,28 @@ class App extends Component {
 
     pokemons = pokemons.map((pokemon, index) => {
       pokemon.id = parseInt(pokemon.url.replace('https://pokeapi.co/api/v2/pokemon/', ''), 10)
-      return <Pokemon pokemon={pokemon} key={index} />
+      return (
+        <Pokemon
+          onClick={this.handleSelectedPokemon}
+          pokemon={pokemon}
+          key={index}
+        />
+      )
     })
 
     return (
       <div className="container-fluid">
-        <Search onChange={this.changeSearchTerm} term={this.state.value} />
+        <Search onChange={this.handleSearchTerm} term={this.state.value} />
         <div className="row">
+          <div className="col-sm-4 col-md-3 col-lg-2">
+            {
+              !selectedPokemon
+              ?
+              <p>Loading...</p>
+              :
+              <SelectPokemon pokemon={selectedPokemon} />
+            }
+          </div>
           <div className="col-sm-8 col-md-9 col-lg-10">
             <table className="user-list table table-striped">
               <thead>
@@ -68,7 +97,7 @@ class App extends Component {
                 {
                   this.props.page.isFetched
                   ?
-                  <tr><td>Загрузка...</td></tr>
+                  <tr><td>Loading...</td></tr>
                   :
                   pokemons
                 }

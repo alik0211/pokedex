@@ -1,6 +1,8 @@
 import {
   REQUEST_POKEMONS,
-  RECEIVE_POKEMONS
+  RECEIVE_POKEMONS,
+  REQUEST_SELECTED_POKEMON,
+  RECEIVE_SELECTED_POKEMON
 } from '../constants/Pokemon'
 
 function requestPokemons(offset) {
@@ -24,6 +26,30 @@ export function fetchPokemons(offset) {
     return fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}`)
       .then(response => response.json())
       .then(json => dispatch(receivePokemons(offset, json)))
+  }
+
+}
+
+function requestSelectedPokemon() {
+  return {
+    type: REQUEST_SELECTED_POKEMON
+  }
+}
+
+function receiveSelectedPokemon(json) {
+  return {
+    type: RECEIVE_SELECTED_POKEMON,
+    selectedPokemon: json
+  }
+}
+
+export function fetchSelectedPokemon(id) {
+
+  return dispatch => {
+    dispatch(requestSelectedPokemon())
+    return fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+      .then(response => response.json())
+      .then(json => dispatch(receiveSelectedPokemon(json)))
   }
 
 }
