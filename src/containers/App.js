@@ -48,7 +48,7 @@ class App extends Component {
     }
 
     pokemons = pokemons.map((pokemon, index) => {
-      pokemon.id = parseInt(pokemon.url.replace('http://pokeapi.co/api/v2/pokemon/', ''), 10)
+      pokemon.id = parseInt(pokemon.url.replace('https://pokeapi.co/api/v2/pokemon/', ''), 10)
       return <Pokemon pokemon={pokemon} key={index} />
     })
 
