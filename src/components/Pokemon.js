@@ -1,10 +1,7 @@
 import React from 'react'
 
-const Pokemon = ({
-  onClick,
-  pokemon
-}) => (
-  <tr onClick={() => onClick(pokemon.id)}>
+const Pokemon = ({ pokemon }) => (
+  <tr>
     <td>
       <img
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
