@@ -31,3 +31,8 @@
   background-color: #fff;
   border: 1px solid #ddd;
 }
+
+.pagination > li > a:hover,
+.pagination .break:hover {
+  cursor: pointer;
+}
