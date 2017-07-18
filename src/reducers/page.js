@@ -1,7 +1,7 @@
 import {
   REQUEST_POKEMONS,
   RECEIVE_POKEMONS
-} from '../constants/Pokemon'
+} from '../constants/Page'
 
 const initialState = {
   isFetched: false,
