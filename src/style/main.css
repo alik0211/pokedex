@@ -1,16 +1,3 @@
-.thumbnail h3 {
-  text-align: center;
-}
-
 .user-list {
   border: 1px solid #ddd;
-}
-
-.user-list tr {
-  cursor: pointer;
-  transition: background-color .1s ease;
-}
-
-.table-striped > tbody > tr:hover {
-  background-color: #eee;
 }

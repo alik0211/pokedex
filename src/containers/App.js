@@ -22,32 +22,23 @@ class App extends Component {
     })
 
     return (
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-sm-4 col-md-3 col-lg-2">
-            Coming soon...
-          </div>
-          <div className="col-sm-8 col-md-9 col-lg-10">
-            <table className="user-list table table-striped">
-              <thead>
-                <tr>
-                  <th>Image</th>
-                  <th>Name</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                  this.props.page.isFetched
-                  ?
-                  <tr><td>Loading...</td></tr>
-                  :
-                  pokemons
-                }
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <table className="user-list">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            this.props.page.isFetched
+            ?
+            <tr><td>Loading...</td></tr>
+            :
+            pokemons
+          }
+        </tbody>
+      </table>
     )
   }
 }
