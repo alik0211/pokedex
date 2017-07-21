@@ -3,27 +3,26 @@ import {
   RECEIVE_POKEMONS
 } from '../constants/Page'
 
-function requestPokemons(offset) {
+function requestPokemons() {
   return {
-    type: REQUEST_POKEMONS,
-    offset
+    type: REQUEST_POKEMONS
   }
 }
 
-function receivePokemons(offset, json) {
+function receivePokemons(json) {
   return {
     type: RECEIVE_POKEMONS,
     pokemons: json.results.map(pokemon => pokemon)
   }
 }
 
-export function fetchPokemons(offset) {
+export function fetchPokemons() {
 
   return dispatch => {
-    dispatch(requestPokemons(offset))
-    return fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${offset}`)
+    dispatch(requestPokemons())
+    return fetch(`https://pokeapi.co/api/v2/pokemon/`)
       .then(response => response.json())
-      .then(json => dispatch(receivePokemons(offset, json)))
+      .then(json => dispatch(receivePokemons(json)))
   }
 
 }

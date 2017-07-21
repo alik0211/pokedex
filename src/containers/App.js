@@ -1,33 +1,12 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import ReactPaginate from 'react-paginate'
 import Pokemon from '../components/Pokemon'
 import * as pageActions from '../actions/PageActions'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      offset: 0
-    }
-
-    this.handlePageChange = this.handlePageChange.bind(this)
-  }
-
-  fetchPokemons() {
-    this.props.pageActions.fetchPokemons(this.state.offset)
-  }
-
   componentDidMount() {
-    this.fetchPokemons()
-  }
-
-  handlePageChange(data) {
-    this.setState({ offset: data.selected * 20 }, () => {
-      this.fetchPokemons()
-    })
+    this.props.pageActions.fetchPokemons()
   }
 
   render() {
@@ -66,13 +45,6 @@ class App extends Component {
                 }
               </tbody>
             </table>
-            <ReactPaginate
-              pageCount={41}
-              pageRangeDisplayed={3}
-              marginPagesDisplayed={3}
-              onPageChange={this.handlePageChange}
-              containerClassName="pagination"
-            />
           </div>
         </div>
       </div>
