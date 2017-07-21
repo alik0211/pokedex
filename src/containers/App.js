@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import ReactPaginate from 'react-paginate'
-import Search from '../components/Search'
 import Pokemon from '../components/Pokemon'
 import * as pageActions from '../actions/PageActions'
 
@@ -11,11 +10,9 @@ class App extends Component {
     super(props)
 
     this.state = {
-      term: '',
       offset: 0
     }
 
-    this.handleSearchTerm = this.handleSearchTerm.bind(this)
     this.handlePageChange = this.handlePageChange.bind(this)
   }
 
@@ -27,10 +24,6 @@ class App extends Component {
     this.fetchPokemons()
   }
 
-  handleSearchTerm(e) {
-    this.setState({ term: e.target.value })
-  }
-
   handlePageChange(data) {
     this.setState({ offset: data.selected * 20 }, () => {
       this.fetchPokemons()
@@ -39,13 +32,6 @@ class App extends Component {
 
   render() {
     let { pokemons } = this.props.page
-    let searchString = this.state.term.trim().toLowerCase()
-
-    if (searchString.length > 0) {
-      pokemons = pokemons.filter(pokemon => {
-        return pokemon.name.toLowerCase().match(searchString)
-      })
-    }
 
     pokemons = pokemons.map((pokemon, index) => {
       let { url } = pokemon
@@ -58,7 +44,6 @@ class App extends Component {
 
     return (
       <div className="container-fluid">
-        <Search onChange={this.handleSearchTerm} term={this.state.value} />
         <div className="row">
           <div className="col-sm-4 col-md-3 col-lg-2">
             Coming soon...
