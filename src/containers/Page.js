@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Pokemon from '../components/Pokemon'
 import * as pageActions from '../actions/PageActions'
 
-class App extends Component {
+class Page extends Component {
   componentDidMount() {
     this.props.pageActions.fetchPokemons()
   }
@@ -49,4 +49,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(Page)
