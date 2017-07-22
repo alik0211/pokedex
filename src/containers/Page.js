@@ -10,22 +10,20 @@ class Page extends Component {
   }
 
   render() {
-    let { pokemons } = this.props.page
+    let { pokemons, isFetched } = this.props.page
 
     pokemons = pokemons.map((pokemon, index) => {
       let { url } = pokemon
       pokemon.id = url.substring(34, url.length - 1)
 
-      return (
-        <Pokemon pokemon={pokemon} key={index} />
-      )
+      return <Pokemon pokemon={pokemon} key={index} />
     })
 
     return (
       <div className="pokemons__wrapper">
         <ul className="pokemons">
           {
-            this.props.page.isFetched
+            isFetched
             ?
             <p>Loading...</p>
             :
