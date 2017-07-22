@@ -20,7 +20,7 @@ export function fetchPokemons() {
 
   return dispatch => {
     dispatch(requestPokemons())
-    return fetch(`https://pokeapi.co/api/v2/pokemon/`)
+    return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=784`)
       .then(response => response.json())
       .then(json => dispatch(receivePokemons(json)))
   }

@@ -22,23 +22,17 @@ class App extends Component {
     })
 
     return (
-      <table className="user-list">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div className="pokemons__wrapper">
+        <ul className="pokemons">
           {
             this.props.page.isFetched
             ?
-            <tr><td>Loading...</td></tr>
+            <p>Loading...</p>
             :
             pokemons
           }
-        </tbody>
-      </table>
+        </ul>
+      </div>
     )
   }
 }
