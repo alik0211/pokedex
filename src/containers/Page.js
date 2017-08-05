@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Pokemon from '../components/Pokemon'
+import Search from '../components/Search'
 import * as pageActions from '../actions/PageActions'
 
 class Page extends Component {
@@ -9,18 +10,20 @@ class Page extends Component {
     this.props.pageActions.fetchPokemons()
   }
 
+  handleSearch(e) {
+    this.props.pageActions.filterPokemons(e.target.value)
+  }
+
   render() {
-    let { pokemons, isFetched } = this.props.page
+    let { displayedPokemons, isFetched } = this.props.page
 
-    pokemons = pokemons.map((pokemon, index) => {
-      let { url } = pokemon
-      pokemon.id = url.substring(34, url.length - 1)
-
+    let pokemons = displayedPokemons.map((pokemon, index) => {
       return <Pokemon pokemon={pokemon} key={index} />
     })
 
     return (
       <div className="pokemons__wrapper">
+        <Search onChange={this.handleSearch.bind(this)} />
         <ul className="pokemons">
           {
             isFetched

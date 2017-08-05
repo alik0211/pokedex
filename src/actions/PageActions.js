@@ -1,6 +1,7 @@
 import {
   REQUEST_POKEMONS,
-  RECEIVE_POKEMONS
+  RECEIVE_POKEMONS,
+  FILTER_POKEMONS
 } from '../constants/Page'
 
 function requestPokemons() {
@@ -12,7 +13,7 @@ function requestPokemons() {
 function receivePokemons(json) {
   return {
     type: RECEIVE_POKEMONS,
-    pokemons: json.results.map(pokemon => pokemon)
+    pokemons: json.results
   }
 }
 
@@ -25,4 +26,11 @@ export function fetchPokemons() {
       .then(json => dispatch(receivePokemons(json)))
   }
 
+}
+
+export function filterPokemons(searchTerm) {
+  return {
+    type: FILTER_POKEMONS,
+    searchTerm
+  }
 }
