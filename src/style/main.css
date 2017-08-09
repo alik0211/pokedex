@@ -1,48 +1,40 @@
 body {
-  font-family: sans-serif;
-
   background-color: #ccc;
+  font-family: sans-serif;
 }
 
 .pokemons__wrapper {
   position: relative;
-
   text-align: center;
 }
 
 .pokemons {
   margin: 0;
   padding: 0;
-
   list-style: none;
 }
 
 .pokemons__item {
   position: relative;
   z-index: 20000;
-
   display: inline-flex;
   overflow: hidden;
-
   margin: 10px;
-
-  cursor: pointer;
-
   background-color: #eee;
+  cursor: pointer;
 }
 
 .pokemons__sprite {
   position: absolute;
-  z-index: 10;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-
+  z-index: 10;
   border: none;
   background-color: transparent;
-  background-repeat: no-repeat;
   background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .pokemons__item,
@@ -52,21 +44,17 @@ body {
 }
 
 .pokemons__name {
-  font-size: 14px;
-
   position: absolute;
-  z-index: 20;
   right: 0;
   bottom: 0;
   left: 0;
-
+  z-index: 20;
   margin: 0;
-
-  text-align: center;
-  pointer-events: none;
-
-  color: #fff;
   background-color: rgba(0,0,0,.5);
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  pointer-events: none;
 }
 
 @media (min-width: 992px) {
