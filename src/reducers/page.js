@@ -36,7 +36,7 @@ export default function pokemon(state = initialState, action) {
 
     case FILTER_POKEMONS:
       let displayedPokemons = state.pokemons.filter(pokemon => {
-        if (pokemon.name.includes(action.searchTerm)) {
+        if (pokemon.name.includes(action.searchTerm.toLowerCase())) {
           return true
         }
 
