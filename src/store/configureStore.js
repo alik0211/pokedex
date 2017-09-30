@@ -10,7 +10,10 @@ export default function configureStore(initialState = {}) {
   let composeEnhancers = compose
 
   if (process.env.NODE_ENV === 'development') {
-    composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+
+    if ('__REDUX_DEVTOOLS_EXTENSION_COMPOSE__' in window) {
+      composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    }
 
     const loggerMiddleware = createLogger()
     middlewares.push(loggerMiddleware)
