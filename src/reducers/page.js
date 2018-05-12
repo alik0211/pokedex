@@ -11,7 +11,6 @@ const initialState = {
 }
 
 export default function pokemon(state = initialState, action) {
-
   switch (action.type) {
     case REQUEST_POKEMONS:
       return {
@@ -20,12 +19,7 @@ export default function pokemon(state = initialState, action) {
       }
 
     case RECEIVE_POKEMONS:
-      let pokemons = action.pokemons.map(pokemon => {
-        let { url } = pokemon
-        pokemon.id = url.substring(34, url.length - 1)
-
-        return pokemon
-      })
+      const { pokemons } = action
 
       return {
         ...state,
@@ -35,13 +29,15 @@ export default function pokemon(state = initialState, action) {
       }
 
     case FILTER_POKEMONS:
-      let displayedPokemons = state.pokemons.filter(pokemon => {
-        if (pokemon.name.includes(action.searchTerm.toLowerCase())) {
-          return true
-        }
+      let displayedPokemons = state.pokemons
+        .filter(pokemon => {
+          if (pokemon.name.includes(action.searchTerm.toLowerCase())) {
+            return true
+          }
 
-        return false
-      }).slice(0, 60)
+          return false
+        })
+        .slice(0, 60)
 
       return {
         ...state,
@@ -51,5 +47,4 @@ export default function pokemon(state = initialState, action) {
     default:
       return state
   }
-
 }
