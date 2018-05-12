@@ -10,7 +10,7 @@ const initialState = {
   displayedPokemons: []
 }
 
-export default function pokemon(state = initialState, action) {
+export default function page(state = initialState, action) {
   switch (action.type) {
     case REQUEST_POKEMONS:
       return {
@@ -24,20 +24,11 @@ export default function pokemon(state = initialState, action) {
       return {
         ...state,
         pokemons,
-        displayedPokemons: pokemons.slice(0, 60),
         isFetched: false
       }
 
     case FILTER_POKEMONS:
-      let displayedPokemons = state.pokemons
-        .filter(pokemon => {
-          if (pokemon.name.includes(action.searchTerm.toLowerCase())) {
-            return true
-          }
-
-          return false
-        })
-        .slice(0, 60)
+      const { displayedPokemons } = action
 
       return {
         ...state,

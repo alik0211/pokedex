@@ -30,13 +30,28 @@ export function fetchPokemons() {
 
     return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=784`)
       .then(response => response.json())
-      .then(json => dispatch(receivePokemons(json)))
+      .then(json => {
+        dispatch(receivePokemons(json))
+        dispatch(filterPokemons(''))
+      })
   }
 }
 
 export function filterPokemons(searchTerm) {
-  return {
-    type: FILTER_POKEMONS,
-    searchTerm
+  return (dispatch, getState) => {
+    const displayedPokemons = getState()
+      .page.pokemons.filter(pokemon => {
+        if (pokemon.name.includes(searchTerm.toLowerCase())) {
+          return true
+        }
+
+        return false
+      })
+      .slice(0, 60)
+
+    dispatch({
+      type: FILTER_POKEMONS,
+      displayedPokemons
+    })
   }
 }
