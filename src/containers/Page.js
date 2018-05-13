@@ -10,8 +10,8 @@ class Page extends Component {
     this.props.pageActions.fetchPokemons()
   }
 
-  handleSearch(e) {
-    this.props.pageActions.filterPokemons(e.target.value)
+  handleSearch(event) {
+    this.props.pageActions.filterPokemons(event.target.value)
   }
 
   render() {
@@ -24,15 +24,7 @@ class Page extends Component {
     return (
       <div className="pokemons__wrapper">
         <Search onChange={this.handleSearch.bind(this)} />
-        <ul className="pokemons">
-          {
-            isFetched
-            ?
-            <p>Loading...</p>
-            :
-            pokemons
-          }
-        </ul>
+        <ul className="pokemons">{isFetched ? <p>Loading...</p> : pokemons}</ul>
       </div>
     )
   }
