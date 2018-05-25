@@ -1,12 +1,12 @@
 import {
-  REQUEST_POKEMONS,
-  RECEIVE_POKEMONS,
+  FETCH_POKEMONS_REQUEST,
+  FETCH_POKEMONS_SUCCESS,
   FILTER_POKEMONS
 } from '../constants/Page'
 
 function requestPokemons() {
   return {
-    type: REQUEST_POKEMONS
+    type: FETCH_POKEMONS_REQUEST
   }
 }
 
@@ -19,7 +19,7 @@ function receivePokemons(json) {
   })
 
   return {
-    type: RECEIVE_POKEMONS,
+    type: FETCH_POKEMONS_SUCCESS,
     pokemons
   }
 }
