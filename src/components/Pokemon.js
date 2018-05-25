@@ -1,16 +1,16 @@
 import React from 'react'
 
 const Pokemon = ({ pokemon }) => (
-  <li className="pokemons__item">
+  <div className="pokemon">
     <button
       type="button"
-      className="pokemons__sprite"
+      className="pokemon__sprite"
       style={{
         backgroundImage: `url(${`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`})`
       }}
     />
-    <p className="pokemons__name">{pokemon.name}</p>
-  </li>
+    <p className="pokemon__name">{pokemon.name}</p>
+  </div>
 )
 
 export default Pokemon

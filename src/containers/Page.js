@@ -18,11 +18,15 @@ class Page extends Component {
     let { displayedPokemons, isFetched } = this.props.page
 
     let pokemons = displayedPokemons.map((pokemon, index) => {
-      return <Pokemon pokemon={pokemon} key={index} />
+      return (
+        <li className="pokemons__item">
+          <Pokemon pokemon={pokemon} key={index} />
+        </li>
+      )
     })
 
     return (
-      <div className="pokemons__wrapper">
+      <div className="page">
         <Search onChange={this.handleSearch.bind(this)} />
         <ul className="pokemons">{isFetched ? <p>Loading...</p> : pokemons}</ul>
       </div>
