@@ -17,9 +17,9 @@ class Page extends Component {
   render() {
     let { displayedPokemons, isFetched } = this.props.page
 
-    let pokemons = displayedPokemons.map((pokemon, index) => {
+    let pokemons = displayedPokemons.map(pokemon => {
       return (
-        <li className="pokemons__item" key={index}>
+        <li className="pokemons__item" key={pokemon.id}>
           <Pokemon pokemon={pokemon} />
         </li>
       )
