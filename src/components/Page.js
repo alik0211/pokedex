@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Pokemon from '../components/Pokemon'
-import Search from '../components/Search'
+import Pokemon from '../components/pokemon'
+import Search from '../components/search'
 
 class Page extends Component {
   componentDidMount() {

@@ -2,7 +2,7 @@ import {
   FETCH_POKEMONS_REQUEST,
   FETCH_POKEMONS_SUCCESS,
   FILTER_POKEMONS
-} from '../constants/Page'
+} from '../constants/page'
 
 function requestPokemons() {
   return {

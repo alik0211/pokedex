@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import * as pageActions from '../actions/PageActions'
-import Page from '../components/Page'
+import * as pageActions from '../actions/page'
+import Page from '../components/page'
 
 function mapStateToProps(state) {
   return {
