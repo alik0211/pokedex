@@ -4,11 +4,11 @@ import Search from '../components/Search'
 
 class Page extends Component {
   componentDidMount() {
-    this.props.pageActions.fetchPokemons()
+    this.props.fetchPokemons()
   }
 
   handleSearch(event) {
-    this.props.pageActions.filterPokemons(event.target.value)
+    this.props.filterPokemons(event.target.value)
   }
 
   render() {
