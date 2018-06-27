@@ -1,6 +1,7 @@
 import {
   GET_POKEMONS_REQUEST,
   GET_POKEMONS_SUCCESS,
+  GET_POKEMONS_FAIL,
   SET_POKEMONS,
   FILTER_POKEMONS
 } from '../constants/page'
@@ -26,13 +27,25 @@ export function getPokemons() {
     })
 
     return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=784`)
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          return response.json()
+        }
+
+        throw new Error(`${response.status}: ${response.statusText}`)
+      })
       .then(data => {
         dispatch({
           type: GET_POKEMONS_SUCCESS
         })
         dispatch(setPokemons(data))
         dispatch(filterPokemons('', 60))
+      })
+      .catch(error => {
+        dispatch({
+          type: GET_POKEMONS_FAIL,
+          error: error.message
+        })
       })
   }
 }

@@ -12,7 +12,7 @@ class Page extends Component {
   }
 
   render() {
-    let { displayedPokemons, isFetched } = this.props.page
+    let { displayedPokemons, isFetched, error } = this.props.page
 
     let pokemons = displayedPokemons.map(pokemon => {
       return (
@@ -25,6 +25,7 @@ class Page extends Component {
     return (
       <div className="page">
         <Search onChange={this.handleSearch.bind(this)} />
+        {error && <p>{error}</p>}
         {isFetched ? (
           <p>Loading...</p>
         ) : (

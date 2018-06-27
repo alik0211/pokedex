@@ -1,12 +1,14 @@
 import {
   GET_POKEMONS_REQUEST,
   GET_POKEMONS_SUCCESS,
+  GET_POKEMONS_FAIL,
   SET_POKEMONS,
   FILTER_POKEMONS
 } from '../constants/page'
 
 const initialState = {
   isFetched: false,
+  error: null,
   pokemons: [],
   displayedPokemons: []
 }
@@ -23,6 +25,14 @@ export default function page(state = initialState, action) {
       return {
         ...state,
         isFetched: false
+      }
+
+    case GET_POKEMONS_FAIL:
+      const { error } = action
+      return {
+        ...state,
+        isFetched: false,
+        error
       }
 
     case SET_POKEMONS:
