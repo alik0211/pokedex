@@ -9,7 +9,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  fetchPokemons: pageActions.fetchPokemons,
+  getPokemons: pageActions.getPokemons,
   filterPokemons: pageActions.filterPokemons
 }
 

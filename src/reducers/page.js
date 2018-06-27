@@ -1,6 +1,7 @@
 import {
   GET_POKEMONS_REQUEST,
   GET_POKEMONS_SUCCESS,
+  SET_POKEMONS,
   FILTER_POKEMONS
 } from '../constants/page'
 
@@ -19,12 +20,17 @@ export default function page(state = initialState, action) {
       }
 
     case GET_POKEMONS_SUCCESS:
+      return {
+        ...state,
+        isFetched: false
+      }
+
+    case SET_POKEMONS:
       const { pokemons } = action
 
       return {
         ...state,
-        pokemons,
-        isFetched: false
+        pokemons
       }
 
     case FILTER_POKEMONS:
