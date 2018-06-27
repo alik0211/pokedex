@@ -10,7 +10,10 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = {
   fetchPokemons: pageActions.fetchPokemons,
-  filterPokemons: pageActions.filterPokemons,
+  filterPokemons: pageActions.filterPokemons
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Page)
