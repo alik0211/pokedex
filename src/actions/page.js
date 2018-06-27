@@ -1,16 +1,16 @@
 import {
-  FETCH_POKEMONS_REQUEST,
-  FETCH_POKEMONS_SUCCESS,
+  GET_POKEMONS_REQUEST,
+  GET_POKEMONS_SUCCESS,
   FILTER_POKEMONS
 } from '../constants/page'
 
-function requestPokemons() {
+function getPokemons() {
   return {
-    type: FETCH_POKEMONS_REQUEST
+    type: GET_POKEMONS_REQUEST
   }
 }
 
-function receivePokemons(json) {
+function setPokemons(json) {
   const pokemons = json.results.map(pokemon => {
     let { url } = pokemon
     pokemon.id = url.substring(34, url.length - 1)
@@ -19,19 +19,19 @@ function receivePokemons(json) {
   })
 
   return {
-    type: FETCH_POKEMONS_SUCCESS,
+    type: GET_POKEMONS_SUCCESS,
     pokemons
   }
 }
 
 export function fetchPokemons() {
   return dispatch => {
-    dispatch(requestPokemons())
+    dispatch(getPokemons())
 
     return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=784`)
       .then(response => response.json())
       .then(json => {
-        dispatch(receivePokemons(json))
+        dispatch(setPokemons(json))
         dispatch(filterPokemons(''))
       })
   }
