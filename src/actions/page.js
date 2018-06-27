@@ -5,8 +5,8 @@ import {
   FILTER_POKEMONS
 } from '../constants/page'
 
-function setPokemons(json) {
-  const pokemons = json.results.map(pokemon => {
+function setPokemons(data) {
+  const pokemons = data.results.map(pokemon => {
     let { url } = pokemon
     pokemon.id = url.substring(34, url.length - 1)
 
@@ -27,11 +27,11 @@ export function getPokemons() {
 
     return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=784`)
       .then(response => response.json())
-      .then(json => {
+      .then(data => {
         dispatch({
           type: GET_POKEMONS_SUCCESS
         })
-        dispatch(setPokemons(json))
+        dispatch(setPokemons(data))
         dispatch(filterPokemons('', 60))
       })
   }
