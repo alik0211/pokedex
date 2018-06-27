@@ -32,18 +32,18 @@ export function getPokemons() {
           type: GET_POKEMONS_SUCCESS
         })
         dispatch(setPokemons(json))
-        dispatch(filterPokemons(''))
+        dispatch(filterPokemons('', 60))
       })
   }
 }
 
-export function filterPokemons(searchString) {
+export function filterPokemons(searchString, limit) {
   return (dispatch, getState) => {
     const displayedPokemons = getState()
       .page.pokemons.filter(pokemon => {
         return pokemon.name.includes(searchString.toLowerCase())
       })
-      .slice(0, 60)
+      .slice(0, limit)
 
     dispatch({
       type: FILTER_POKEMONS,
