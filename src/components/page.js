@@ -25,7 +25,11 @@ class Page extends Component {
     return (
       <div className="page">
         <Search onChange={this.handleSearch.bind(this)} />
-        <ul className="pokemons">{isFetched ? <p>Loading...</p> : pokemons}</ul>
+        {isFetched ? (
+          <p>Loading...</p>
+        ) : (
+          <ul className="pokemons">{pokemons}</ul>
+        )}
       </div>
     )
   }
