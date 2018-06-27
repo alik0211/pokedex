@@ -37,11 +37,11 @@ export function getPokemons() {
   }
 }
 
-export function filterPokemons(searchTerm) {
+export function filterPokemons(searchString) {
   return (dispatch, getState) => {
     const displayedPokemons = getState()
       .page.pokemons.filter(pokemon => {
-        return pokemon.name.includes(searchTerm.toLowerCase())
+        return pokemon.name.includes(searchString.toLowerCase())
       })
       .slice(0, 60)
 
