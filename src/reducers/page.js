@@ -28,27 +28,22 @@ export default function page(state = initialState, action) {
       }
 
     case GET_POKEMONS_FAIL:
-      const { error } = action
       return {
         ...state,
         isFetched: false,
-        error
+        error: action.payload
       }
 
     case SET_POKEMONS:
-      const { pokemons } = action
-
       return {
         ...state,
-        pokemons
+        pokemons: action.payload
       }
 
     case FILTER_POKEMONS:
-      const { displayedPokemons } = action
-
       return {
         ...state,
-        displayedPokemons
+        displayedPokemons: action.payload
       }
 
     default:

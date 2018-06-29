@@ -16,7 +16,7 @@ function setPokemons(data) {
 
   return {
     type: SET_POKEMONS,
-    pokemons
+    payload: pokemons
   }
 }
 
@@ -44,7 +44,7 @@ export function getPokemons() {
       .catch(error => {
         dispatch({
           type: GET_POKEMONS_FAIL,
-          error: error.message
+          payload: error.message
         })
       })
   }
@@ -60,7 +60,7 @@ export function filterPokemons(searchString, limit) {
 
     dispatch({
       type: FILTER_POKEMONS,
-      displayedPokemons
+      payload: displayedPokemons
     })
   }
 }
