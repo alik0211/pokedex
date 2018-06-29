@@ -24,8 +24,10 @@ class Page extends Component {
 
     return (
       <div className="page">
-        <Search onChange={this.handleSearch.bind(this)} />
-        {error && <p>{error}</p>}
+        {error && <div className="page__error">{error}</div>}
+        <div className="page__search">
+          <Search onChange={this.handleSearch.bind(this)} />
+        </div>
         {isFetched ? (
           <p>Loading...</p>
         ) : (

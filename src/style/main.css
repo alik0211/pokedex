@@ -1,11 +1,24 @@
 body {
   background-color: #ccc;
   font-family: sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .page {
   position: relative;
   text-align: center;
+}
+
+.page__search {
+  padding-top: 10px;
+}
+
+.page__error {
+  position: absolute;
+  padding: 5px;
+  color: #fff;
+  background-color: #f44336;
 }
 
 .pokemons {
