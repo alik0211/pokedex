@@ -39,7 +39,7 @@ export function getPokemons() {
           type: GET_POKEMONS_SUCCESS
         })
         dispatch(setPokemons(data))
-        dispatch(filterPokemons('', 60))
+        dispatch(filterPokemons(''))
       })
       .catch(error => {
         dispatch({
@@ -50,13 +50,11 @@ export function getPokemons() {
   }
 }
 
-export function filterPokemons(searchString, limit) {
+export function filterPokemons(searchString) {
   return (dispatch, getState) => {
-    const displayedPokemons = getState()
-      .page.pokemons.filter(pokemon => {
-        return pokemon.name.includes(searchString.toLowerCase())
-      })
-      .slice(0, limit)
+    const displayedPokemons = getState().page.pokemons.filter(pokemon => {
+      return pokemon.name.includes(searchString.toLowerCase())
+    })
 
     dispatch({
       type: FILTER_POKEMONS,

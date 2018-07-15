@@ -8,7 +8,7 @@ class Page extends Component {
   }
 
   handleSearch(event) {
-    this.props.filterPokemons(event.currentTarget.value, 60)
+    this.props.filterPokemons(event.currentTarget.value)
   }
 
   render() {
