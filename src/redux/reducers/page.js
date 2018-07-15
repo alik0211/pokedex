@@ -13,7 +13,7 @@ const initialState = {
   displayedPokemons: []
 }
 
-export default function page(state = initialState, action) {
+export default function(state = initialState, action) {
   switch (action.type) {
     case GET_POKEMONS_REQUEST:
       return {
