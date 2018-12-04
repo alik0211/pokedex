@@ -9,13 +9,14 @@
     "react-redux": "^5.1.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "react-scripts": "latest",
-    "redux-logger": "^3.0.6"
+    "react-scripts": "latest"
   },
   "devDependencies": {
     "husky": "^1.2.0",
     "lint-staged": "^8.1.0",
-    "prettier": "1.15.3"
+    "prettier": "1.15.3",
+    "react-scripts": "2.1.1",
+    "redux-logger": "^3.0.6"
   },
   "scripts": {
     "start": "react-scripts start",
