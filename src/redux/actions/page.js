@@ -5,6 +5,8 @@ import {
   SET_POKEMONS,
   FILTER_POKEMONS
 } from '../constants/page'
+import mockData from './data/mock'
+const isMock = true
 
 function setPokemons(data) {
   const pokemons = data.results.map(pokemon => {
@@ -25,28 +27,36 @@ export function getPokemons() {
     dispatch({
       type: GET_POKEMONS_REQUEST
     })
+    if (isMock) {
+      dispatch({
+        type: GET_POKEMONS_SUCCESS
+      })
+      mockData.results = mockData.results.slice(1, 15)
+      dispatch(setPokemons(mockData))
+      dispatch(filterPokemons())
+    } else {
+      return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=4&offset=1`)
+        .then(response => {
+          if (response.ok) {
+            return response.json()
+          }
 
-    return fetch(`https://pokeapi.co/api/v2/pokemon/?limit=784`)
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        }
-
-        throw new Error(`${response.status}: ${response.statusText}`)
-      })
-      .then(data => {
-        dispatch({
-          type: GET_POKEMONS_SUCCESS
+          throw new Error(`${response.status}: ${response.statusText}`)
         })
-        dispatch(setPokemons(data))
-        dispatch(filterPokemons())
-      })
-      .catch(error => {
-        dispatch({
-          type: GET_POKEMONS_FAIL,
-          payload: error.message
+        .then(data => {
+          dispatch({
+            type: GET_POKEMONS_SUCCESS
+          })
+          dispatch(setPokemons(data))
+          dispatch(filterPokemons())
         })
-      })
+        .catch(error => {
+          dispatch({
+            type: GET_POKEMONS_FAIL,
+            payload: error.message
+          })
+        })
+    }
   }
 }
 

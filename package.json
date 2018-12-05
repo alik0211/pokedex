@@ -3,13 +3,14 @@
   "version": "2.0.5",
   "author": "",
   "dependencies": {
+    "cross-env": "^5.2.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.1.1",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
     "react-scripts": "latest",
-    "redux-logger": "^3.0.6"
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "husky": "^1.2.0",
@@ -19,9 +20,9 @@
     "redux-logger": "^3.0.6"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm run test && react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "cross-env CI=true react-scripts test --env=node",
     "eject": "react-scripts eject"
   },
   "husky": {
