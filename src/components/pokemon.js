@@ -6,11 +6,12 @@ class Pokemon extends PureComponent {
     this.state = {
       moreInfo: {}
     }
+    this.onMoreInfoClick = this.onMoreInfoClick.bind(this)
   }
   componentWillMount() {
     this.onMoreInfoClick()
   }
-  onMoreInfoClick = () => {
+  onMoreInfoClick() {
     let pokemonId = this.props.pokemon.id
     let self = this
     fetch('https://pokeapi.co/api/v2/pokemon/' + pokemonId + '/')
