@@ -1,5 +1,5 @@
 import React from 'react'
-import pokemon from './components/pokemon'
+import pokemon from '../components/pokemon'
 
 it('renders welcome message', () => {
   let p = new pokemon()
