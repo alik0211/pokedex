@@ -25,7 +25,7 @@
     "redux-logger": "^3.0.6"
   },
   "scripts": {
-    "start": "npm run test && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "mocha --require babel-register",
     "eject": "react-scripts eject"
