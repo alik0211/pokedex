@@ -5,3 +5,11 @@ node_js:
 cache: npm
 
 script: "npm run build"
+
+deploy:
+  provider: pages
+  local-dir: build
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master

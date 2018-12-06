@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "private": true,
   "author": "Ali Gasymov <alik0211alik@gmail.com> (https://alik0211.com/)",
+  "homepage": "https://alik0211.github.io/pokedex/",
   "dependencies": {
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
