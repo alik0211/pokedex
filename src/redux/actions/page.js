@@ -31,7 +31,7 @@ export function getPokemons() {
       dispatch({
         type: GET_POKEMONS_SUCCESS
       })
-      mockData.results = mockData.results.slice(1, 200)
+      mockData.results = mockData.results.slice(0, 3)
       dispatch(setPokemons(mockData))
       dispatch(filterPokemons())
     } else {

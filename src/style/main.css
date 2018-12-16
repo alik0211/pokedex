@@ -165,7 +165,7 @@ body {
 }
 
 .pokemon {
-  height: 350px;
+  height: 264px;
 }
 
 .pokemon h1 {
@@ -191,7 +191,7 @@ body {
 
 .pokemon .panel-body {
   position: relative;
-  height: 250px;
+  height: 164px;
 }
 
 .pokemon pokemon-type {
