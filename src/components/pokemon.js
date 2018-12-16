@@ -67,6 +67,7 @@ class Pokemon extends PureComponent {
     let img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
       pokemon.id
     }.png`
+    let typeCls = 'label type type-' + type
     return (
       <div className="pokemon panel panel-primary">
         <div className="panel-heading">
@@ -93,9 +94,7 @@ class Pokemon extends PureComponent {
               ng-repeat="type in pokemon.type"
               className="ng-scope"
             >
-              <span className="label type type-poison">
-                {type.toString().toUpperCase()}
-              </span>
+              <span className={typeCls}>{type.toString().toUpperCase()}</span>
             </a>
           </div>
         </div>
