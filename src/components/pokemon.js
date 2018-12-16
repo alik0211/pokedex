@@ -26,24 +26,6 @@ class Pokemon extends PureComponent {
         })
       })
   }
-  renderL() {
-    const { pokemon } = this.props
-    let moreInfo = this.state.moreInfo
-    return (
-      <div className="pokemon">
-        <button
-          type="button"
-          className="pokemon__sprite"
-          style={{
-            backgroundImage: `url(${`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-              pokemon.id
-            }.png`})`
-          }}
-        />
-        <p className="pokemon__name">{pokemon.name}</p>
-      </div>
-    )
-  }
 
   render() {
     const { pokemon } = this.props
@@ -63,11 +45,11 @@ class Pokemon extends PureComponent {
         moreInfo.types[1].type.name) ||
       'N/A'
 
-    console.log(pokemon)
     let img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
       pokemon.id
     }.png`
     let typeCls = 'label type type-' + type
+    let moves = moreInfo && moreInfo.types ? moreInfo.moves : []
     return (
       <div className="pokemon panel panel-primary">
         <div className="panel-heading">
@@ -89,51 +71,12 @@ class Pokemon extends PureComponent {
         </div>
         <div className="panel-footer">
           <div className="text-center">
-            <a
-              href="/pokedex/#Poison"
-              ng-repeat="type in pokemon.type"
-              className="ng-scope"
-            >
+            <a href="#" ng-repeat="type in pokemon.type" className="ng-scope">
               <span className={typeCls}>{type.toString().toUpperCase()}</span>
             </a>
+            <br />
+            <span style={{ color: 'black' }}>#{moves.length} moves</span>
           </div>
-        </div>
-      </div>
-    )
-  }
-  renderX() {
-    const { pokemon } = this.props
-    let moreInfo = this.state.moreInfo
-    console.log(pokemon)
-    let img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-      pokemon.id
-    }.png`
-    return (
-      <div className="card" style={{ width: '18rem' }}>
-        <img className="card-img-top" src={img} alt="Card image cap" />
-        <div className="card-body">
-          <h5 className="card-title">{pokemon.name}</h5>
-          <p className="card-text">
-            <ul className="list-group">
-              {moreInfo &&
-                moreInfo.abilities &&
-                moreInfo.abilities.map((item, key) => {
-                  console.log(item)
-                  return (
-                    <li className="list-group-item" key={key}>
-                      {item.ability.name}
-                    </li>
-                  )
-                })}
-            </ul>
-          </p>
-          <a
-            href="#"
-            className="btn btn-primary"
-            onClick={this.onMoreInfoClick}
-          >
-            Load Pokemon Information
-          </a>
         </div>
       </div>
     )
