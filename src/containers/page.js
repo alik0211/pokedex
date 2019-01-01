@@ -2,10 +2,6 @@ import { connect } from 'react-redux'
 import * as pageActions from '../redux/actions/page'
 import Page from '../components/page'
 
-/**
- * mapStateToProps - mapping the state from the store to the component
- * @param {*} state
- */
 function mapStateToProps(state) {
   const { displayedPokemons, isFetched, error } = state.page
 
