@@ -16,6 +16,9 @@ function mapStateToProps(state) {
   }
 }
 
+/**
+ * New Object - mapDispatchToProps
+ */
 const mapDispatchToProps = {
   getPokemons: pageActions.getPokemons,
   filterPokemons: pageActions.filterPokemons
