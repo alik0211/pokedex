@@ -21,7 +21,9 @@ function setPokemons(data) {
     payload: pokemons
   }
 }
-
+/**
+ * public function getPokemons - retrieve list of pokemons
+ */
 export function getPokemons() {
   return dispatch => {
     dispatch({
