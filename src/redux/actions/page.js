@@ -10,7 +10,7 @@ function setPokemons(data) {
   const pokemons = data.results.map(pokemon => {
     let { url } = pokemon
     pokemon.id = url.substring(34, url.length - 1)
-
+    pokemon.name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
     return pokemon
   })
 
@@ -53,7 +53,7 @@ export function getPokemons() {
 export function filterPokemons(searchString = '') {
   return (dispatch, getState) => {
     const displayedPokemons = getState().page.pokemons.filter(pokemon => {
-      return pokemon.name.includes(searchString.toLowerCase())
+      return pokemon.name.toLowerCase().includes(searchString.toLowerCase())
     })
 
     dispatch({
