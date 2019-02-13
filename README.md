@@ -25,3 +25,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
+
+## Related
+
+- [YouTube Meta](https://github.com/alik0211/youtube-meta) - Shows meta information about the video on YouTube
