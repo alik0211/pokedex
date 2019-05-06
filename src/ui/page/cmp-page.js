@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Pokemon from '../components/pokemon'
-import Search from '../components/search'
+import Pokemon from '../pokemon/cmp-pokemon'
+import Search from '../search/cmp-search'
 
 class Page extends Component {
   componentDidMount() {
@@ -8,13 +8,13 @@ class Page extends Component {
   }
 
   handleSearch(event) {
-    this.props.filterPokemons(event.currentTarget.value)
+    console.log('event.currentTarget.value:', event.currentTarget.value)
   }
 
   render() {
-    let { displayedPokemons, isFetched, error } = this.props
+    let { collection, isFetched } = this.props
 
-    let pokemons = displayedPokemons.map(pokemon => {
+    let pokemons = Object.values(collection).map(pokemon => {
       return (
         <li className="pokemons__item" key={pokemon.id}>
           <Pokemon pokemon={pokemon} />
@@ -24,7 +24,7 @@ class Page extends Component {
 
     return (
       <div className="page">
-        {error && <div className="page__error">{error}</div>}
+        {/* {error && <div className="page__error">{error}</div>} */}
         <div className="page__search">
           <Search onChange={this.handleSearch.bind(this)} />
         </div>
