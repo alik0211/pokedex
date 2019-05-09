@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import hardtack from 'hardtack'
 import Pokemon from '../pokemon/cmp-pokemon'
 import Search from '../search/cmp-search'
 
 class Page extends Component {
   state = {
+    searchString: '',
     pokemonsIds: [],
     error: null
   }
@@ -16,8 +18,24 @@ class Page extends Component {
         })
       }
 
+      const searchString = hardtack.get('searchString')
+      const { collection } = this.props
+
+      if (!searchString) {
+        return this.setState({
+          pokemonsIds: Object.keys(collection)
+        })
+      }
+
+      const pokemonsIds = Object.keys(collection).filter(pokemonId => {
+        const pokemon = collection[pokemonId]
+
+        return pokemon.name.includes(searchString)
+      })
+
       this.setState({
-        pokemonsIds: Object.keys(this.props.collection)
+        pokemonsIds,
+        searchString
       })
     })
   }
@@ -26,9 +44,14 @@ class Page extends Component {
     const value = event.currentTarget.value.toLowerCase().trim()
     const { collection } = this.props
 
+    hardtack.set('searchString', value, {
+      maxAge: '31536000'
+    })
+
     if (value === '') {
       return this.setState({
-        pokemonsIds: Object.keys(collection)
+        pokemonsIds: Object.keys(collection),
+        searchString: value
       })
     }
 
@@ -39,12 +62,13 @@ class Page extends Component {
     })
 
     this.setState({
-      pokemonsIds
+      pokemonsIds,
+      searchString: value
     })
   }
 
   render() {
-    const { pokemonsIds, error } = this.state
+    const { searchString, pokemonsIds, error } = this.state
     const { collection, isFetched } = this.props
 
     const pokemons = pokemonsIds.map(pokemonId => {
@@ -61,7 +85,7 @@ class Page extends Component {
       <div className="page">
         {error && <div className="page__error">{error}</div>}
         <div className="page__search">
-          <Search onChange={this.handleSearch} />
+          <Search onChange={this.handleSearch} value={searchString} />
         </div>
         {isFetched ? (
           <p>Loading...</p>
