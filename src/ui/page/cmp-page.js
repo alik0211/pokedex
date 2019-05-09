@@ -4,11 +4,18 @@ import Search from '../search/cmp-search'
 
 class Page extends Component {
   state = {
-    pokemonsIds: []
+    pokemonsIds: [],
+    error: null
   }
 
   componentDidMount() {
-    this.props.getPokemons().then(() => {
+    this.props.getPokemons().then(action => {
+      if (action.error) {
+        return this.setState({
+          error: action.payload.message
+        })
+      }
+
       this.setState({
         pokemonsIds: Object.keys(this.props.collection)
       })
@@ -19,10 +26,16 @@ class Page extends Component {
     const value = event.currentTarget.value.toLowerCase().trim()
     const { collection } = this.props
 
+    if (value === '') {
+      return this.setState({
+        pokemonsIds: Object.keys(collection)
+      })
+    }
+
     const pokemonsIds = Object.keys(collection).filter(pokemonId => {
       const pokemon = collection[pokemonId]
 
-      return pokemon.name.includes(value) || value === ''
+      return pokemon.name.includes(value)
     })
 
     this.setState({
@@ -31,7 +44,7 @@ class Page extends Component {
   }
 
   render() {
-    const { pokemonsIds } = this.state
+    const { pokemonsIds, error } = this.state
     const { collection, isFetched } = this.props
 
     const pokemons = pokemonsIds.map(pokemonId => {
@@ -46,7 +59,7 @@ class Page extends Component {
 
     return (
       <div className="page">
-        {/* {error && <div className="page__error">{error}</div>} */}
+        {error && <div className="page__error">{error}</div>}
         <div className="page__search">
           <Search onChange={this.handleSearch} />
         </div>
