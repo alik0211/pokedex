@@ -24,7 +24,7 @@ export default function(state = initialState, action) {
           ...state.collection,
           ...action.payload.results.reduce((accumulator, item) => {
             const { url } = item
-            const id = +url.substring(34, url.length - 1)
+            const id = url.substring(34, url.length - 1)
 
             return {
               ...accumulator,
