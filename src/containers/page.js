@@ -6,7 +6,7 @@ import Page from '../components/page'
  * mapStateToProps
  * @param {*} state
  */
-function mapStateToProps(state) { 
+function mapStateToProps(state) {
   const { displayedPokemons, isFetched, error } = state.page
 
   return {
