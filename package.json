@@ -28,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "mocha --require babel-register",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "travis": "npm run test && npm run build"
   },
   "husky": {
     "hooks": {
