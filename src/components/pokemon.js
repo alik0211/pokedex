@@ -71,9 +71,7 @@ class Pokemon extends PureComponent {
         </div>
         <div className="panel-footer">
           <div className="text-center">
-            <a className="ng-scope">
               <span className={typeCls}>{type.toString().toUpperCase()}</span>
-            </a>
             <br />
             <span style={{ color: 'black' }}>#{moves.length} moves</span>
           </div>
