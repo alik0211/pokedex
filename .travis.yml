@@ -3,8 +3,3 @@ node_js:
 - '10'
 cache: npm
 script: npm run travis
-deploy:
-  app: cicd-seminar
-  provider: heroku
-  api_key:
-    secure: X+NgFaSpSu0bDw4X1EAQ2AU+2qM3jMn3YSBAJC0z6Kw4eXgWibmV6stbB6LZ5n9Xr+DMTH3iyOYGqfK4k5POJq4JjUYoH+bZeUaXMeLPPCt8r+fRH/nvefERpQgEcouP6TUykREkdw68a6xTkYyCRI7fkHIG8GsR5RVS2LWFdm0b+OF9hSZ/qEej7Z91GfJfZG+pPSjhw3eJTdNmv5uInXBxk8XlYw/17qVCLG3AFBgVNAubgXByCGbKhkPNupCVCImBXacvclXa+N4wzcNobsZLYXVIyxLphhJajKDM+Re7tyWicSBzc1j70OwYVEqr5tzVYQT1rVzUxCHa0piLzh6584Dwp9cbuOQg0kA5M+GmUhVGE4kjtfU/ps+YwWHA1xqlR3deXkkcqaCNeIdqpWvAfiFvFMcANNyRG/hMbuke+X+yz872BTqRnwTFyFt8RQgacvpX7wDZrhY8p9gr/GEA/iPlgDwmygYUX4HNU+4v3M27RWHNWK7DblutkXZ56tz41qLpmarabHXc2YBbHpRI/mb28/9blOa32ySUCzsG41ilP4HfXkGpxXmOUbHfbKnnDweO7NGRbxKgUhWsAuemphzStDRkOm2WMAj3EZ49D6lIgSTT/ppK29LU3PWWGssGXzNMwPDVHPvAU2XTPL8vpXUsD2y4wkHH79U26OE=
