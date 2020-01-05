@@ -43,7 +43,7 @@ class Page extends Component {
               </button>
               <a href="/" className="navbar-brand">
                 <img src="logo.png" alt="logo" />
-                Pokédex 
+                Pokédex  
               </a>
             </div>
             <Search onChange={this.handleSearch.bind(this)} />
