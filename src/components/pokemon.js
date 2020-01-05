@@ -67,11 +67,11 @@ class Pokemon extends PureComponent {
           </h1>
         </div>
         <div className="panel-body">
-          <img className="avatar center-block" src={img} />
+          <img className="avatar center-block" alt="avatar" src={img} />
         </div>
         <div className="panel-footer">
           <div className="text-center">
-            <a href="#" ng-repeat="type in pokemon.type" className="ng-scope">
+            <a className="ng-scope">
               <span className={typeCls}>{type.toString().toUpperCase()}</span>
             </a>
             <br />

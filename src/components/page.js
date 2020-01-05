@@ -41,8 +41,8 @@ class Page extends Component {
                 <span className="icon-bar" />
                 <span className="icon-bar" />
               </button>
-              <a className="navbar-brand" href="#">
-                <img src="logo.png" />
+              <a className="navbar-brand">
+                <img src="logo.png" alt="logo" />
                 Pokédex
               </a>
             </div>
