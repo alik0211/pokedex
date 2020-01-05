@@ -1,6 +1,6 @@
 {
   "name": "pokedex",
-  "version": "2.0.59",
+  "version": "2.0.60",
   "author": "",
   "dependencies": {
     "cross-env": "^5.2.0",
