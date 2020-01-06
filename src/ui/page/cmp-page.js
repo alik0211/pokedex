@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import hardtack from 'hardtack'
 import Pokemon from '../pokemon/cmp-pokemon'
 import Search from '../search/cmp-search'
+import ga from '../../utils/ga'
 
 class Page extends Component {
   state = {
@@ -38,6 +39,8 @@ class Page extends Component {
         searchString
       })
     })
+
+    ga.pageview('/')
   }
 
   handleSearch = event => {
