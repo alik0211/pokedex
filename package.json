@@ -2,7 +2,7 @@
   "name": "pokedex",
   "version": "3.0.0",
   "private": true,
-  "author": "Ali Gasymov <alik0211alik@gmail.com> (https://alik0211.com/)",
+  "author": "Ali Gasymov <alik0211alik@gmail.com> (https://www.gasymov.com/)",
   "homepage": "https://alik0211.github.io/pokedex/",
   "dependencies": {
     "hardtack": "4.1.0",
