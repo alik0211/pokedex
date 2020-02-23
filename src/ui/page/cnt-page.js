@@ -3,10 +3,10 @@ import { getPokemons } from '../../actions/pokemons'
 import Page from './cmp-page'
 
 function mapStateToProps(state) {
-  const { collection } = state.pokemons
+  const pokemonsById = state.pokemons.byId
 
   return {
-    collection
+    pokemonsById
   }
 }
 

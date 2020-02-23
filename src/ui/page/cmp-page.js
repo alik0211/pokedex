@@ -20,16 +20,16 @@ class Page extends Component {
       }
 
       const searchString = hardtack.get('searchString')
-      const { collection } = this.props
+      const { pokemonsById } = this.props
 
       if (!searchString) {
         return this.setState({
-          pokemonsIds: Object.keys(collection)
+          pokemonsIds: Object.keys(pokemonsById)
         })
       }
 
-      const pokemonsIds = Object.keys(collection).filter(pokemonId => {
-        const pokemon = collection[pokemonId]
+      const pokemonsIds = Object.keys(pokemonsById).filter(pokemonId => {
+        const pokemon = pokemonsById[pokemonId]
 
         return pokemon.name.includes(searchString)
       })
@@ -45,7 +45,7 @@ class Page extends Component {
 
   handleSearch = event => {
     const value = event.currentTarget.value.toLowerCase().trim()
-    const { collection } = this.props
+    const { pokemonsById } = this.props
 
     hardtack.set('searchString', value, {
       maxAge: '31536000'
@@ -53,13 +53,13 @@ class Page extends Component {
 
     if (value === '') {
       return this.setState({
-        pokemonsIds: Object.keys(collection),
+        pokemonsIds: Object.keys(pokemonsById),
         searchString: value
       })
     }
 
-    const pokemonsIds = Object.keys(collection).filter(pokemonId => {
-      const pokemon = collection[pokemonId]
+    const pokemonsIds = Object.keys(pokemonsById).filter(pokemonId => {
+      const pokemon = pokemonsById[pokemonId]
 
       return pokemon.name.includes(value)
     })
@@ -72,10 +72,10 @@ class Page extends Component {
 
   render() {
     const { searchString, pokemonsIds, error } = this.state
-    const { collection, isFetched } = this.props
+    const { pokemonsById, isFetched } = this.props
 
     const pokemons = pokemonsIds.map(pokemonId => {
-      const pokemon = collection[pokemonId]
+      const pokemon = pokemonsById[pokemonId]
 
       return (
         <li className="pokemons__item" key={pokemon.id}>

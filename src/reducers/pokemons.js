@@ -5,7 +5,7 @@ import {
 } from '../actions/pokemons'
 
 const initialState = {
-  collection: {},
+  byId: {},
   isFetched: false
 }
 
@@ -20,8 +20,8 @@ export default function(state = initialState, action) {
     case GET_POKEMONS_SUCCESS:
       return {
         ...state,
-        collection: {
-          ...state.collection,
+        byId: {
+          ...state.byId,
           ...action.payload.results.reduce((accumulator, item) => {
             const { url } = item
             const id = url.substring(34, url.length - 1)
