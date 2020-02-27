@@ -40,7 +40,7 @@ class Page extends Component {
       })
     })
 
-    ga.pageview('/')
+    ga.pageview(window.location.pathname + window.location.search)
   }
 
   handleSearch = event => {
