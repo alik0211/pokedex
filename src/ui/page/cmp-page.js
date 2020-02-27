@@ -20,15 +20,15 @@ class Page extends Component {
       }
 
       const searchString = hardtack.get('searchString')
-      const { pokemonsById } = this.props
+      const { pokemonsById, pokemonsAllIds } = this.props
 
       if (!searchString) {
         return this.setState({
-          pokemonsIds: Object.keys(pokemonsById)
+          pokemonsIds: pokemonsAllIds
         })
       }
 
-      const pokemonsIds = Object.keys(pokemonsById).filter(pokemonId => {
+      const pokemonsIds = pokemonsAllIds.filter(pokemonId => {
         const pokemon = pokemonsById[pokemonId]
 
         return pokemon.name.includes(searchString)
@@ -45,7 +45,7 @@ class Page extends Component {
 
   handleSearch = event => {
     const value = event.currentTarget.value.toLowerCase().trim()
-    const { pokemonsById } = this.props
+    const { pokemonsById, pokemonsAllIds } = this.props
 
     hardtack.set('searchString', value, {
       maxAge: '31536000'
@@ -53,12 +53,12 @@ class Page extends Component {
 
     if (value === '') {
       return this.setState({
-        pokemonsIds: Object.keys(pokemonsById),
+        pokemonsIds: pokemonsAllIds,
         searchString: value
       })
     }
 
-    const pokemonsIds = Object.keys(pokemonsById).filter(pokemonId => {
+    const pokemonsIds = pokemonsAllIds.filter(pokemonId => {
       const pokemon = pokemonsById[pokemonId]
 
       return pokemon.name.includes(value)

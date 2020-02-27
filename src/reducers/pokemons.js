@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   byId: {},
+  allIds: [],
   isFetched: false
 }
 
@@ -18,23 +19,20 @@ export default function(state = initialState, action) {
       }
 
     case GET_POKEMONS_SUCCESS:
+      action.payload.results.forEach(item => {
+        const { url } = item
+        const id = url.substring(34, url.length - 1)
+
+        state.byId[id] = {
+          id,
+          ...item
+        }
+
+        state.allIds.push(id)
+      })
+
       return {
         ...state,
-        byId: {
-          ...state.byId,
-          ...action.payload.results.reduce((accumulator, item) => {
-            const { url } = item
-            const id = url.substring(34, url.length - 1)
-
-            return {
-              ...accumulator,
-              [id]: {
-                id,
-                ...item
-              }
-            }
-          }, {})
-        },
         isFetched: false
       }
 
