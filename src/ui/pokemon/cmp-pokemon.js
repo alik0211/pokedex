@@ -3,7 +3,9 @@ import ga from '../../utils/ga'
 
 class Pokemon extends PureComponent {
   render() {
-    const { pokemon } = this.props
+    const { id, pokemonsById } = this.props
+
+    const pokemon = pokemonsById[id]
 
     return (
       <div className="pokemon">

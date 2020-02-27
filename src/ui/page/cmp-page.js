@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import hardtack from 'hardtack'
-import Pokemon from '../pokemon/cmp-pokemon'
+import Pokemon from '../pokemon/cnt-pokemon'
 import Search from '../search/cmp-search'
 import ga from '../../utils/ga'
 
@@ -72,14 +72,12 @@ class Page extends Component {
 
   render() {
     const { searchString, pokemonsIds, error } = this.state
-    const { pokemonsById, isFetched } = this.props
+    const { isFetched } = this.props
 
     const pokemons = pokemonsIds.map(pokemonId => {
-      const pokemon = pokemonsById[pokemonId]
-
       return (
-        <li className="pokemons__item" key={pokemon.id}>
-          <Pokemon pokemon={pokemon} />
+        <li className="pokemons__item" key={pokemonId}>
+          <Pokemon id={pokemonId} />
         </li>
       )
     })
