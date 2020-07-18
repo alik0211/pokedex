@@ -1,11 +1,9 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import ga from '../../utils/ga'
 
-class Pokemon extends PureComponent {
+class Pokemon extends Component {
   render() {
-    const { id, pokemonsById } = this.props
-
-    const pokemon = pokemonsById[id]
+    const { pokemon } = this.props
 
     return (
       <div className="pokemon">
