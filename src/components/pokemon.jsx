@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ga from '../../utils/ga'
+import ga from '../utils/ga.jsx'
 
 class Pokemon extends Component {
   render() {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import hardtack from 'hardtack'
-import Pokemon from '../pokemon/cmp-pokemon'
-import Search from '../search/cmp-search'
-import ga from '../../utils/ga'
-import api from '../../utils/api'
+import Pokemon from './components/pokemon.jsx'
+import Search from './components/search.jsx'
+import ga from './utils/ga.jsx'
+import api from './utils/api.js'
 
-class Page extends Component {
+class App extends Component {
   state = {
     isLoading: false,
     searchString: '',
@@ -89,4 +89,4 @@ class Page extends Component {
   }
 }
 
-export default Page
+export default App
