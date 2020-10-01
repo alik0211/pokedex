@@ -1,92 +1,71 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import hardtack from 'hardtack'
 import Pokemon from './components/pokemon.jsx'
 import Search from './components/search.jsx'
-import ga from './utils/ga.jsx'
+import ga from './utils/ga.js'
 import api from './utils/api.js'
 
-class App extends Component {
-  state = {
-    isLoading: false,
-    searchString: '',
-    pokemons: [],
-    error: null
-  }
+export default function App() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [searchString, setSearchString] = useState('')
+  const [pokemons, setPokemons] = useState([])
+  const [error, setError] = useState(null)
 
-  componentDidMount() {
+  useEffect(() => {
     const searchString = hardtack.get('searchString') || ''
+    setIsLoading(true)
+    setSearchString(searchString)
+  }, [])
 
-    this.setState({
-      isLoading: true,
-      searchString
+  api
+    .getPokemons()
+    .then(pokemons => {
+      setPokemons(pokemons)
+    })
+    .catch(error => {
+      setError(error.message)
+    })
+    .finally(() => {
+      setIsLoading(false)
     })
 
-    api
-      .getPokemons()
-      .then(pokemons => {
-        this.setState({
-          pokemons
-        })
-      })
-      .catch(error => {
-        this.setState({
-          error: error.message
-        })
-      })
-      .finally(() => {
-        this.setState({
-          isLoading: false
-        })
-      })
+  ga.pageview(window.location.pathname + window.location.search)
 
-    ga.pageview(window.location.pathname + window.location.search)
-  }
-
-  handleSearchChange = event => {
+  const handleSearchChange = event => {
     const value = event.currentTarget.value.toLowerCase().trim()
 
     hardtack.set('searchString', value, {
       maxAge: '31536000'
     })
 
-    this.setState({
-      searchString: value
-    })
+    setSearchString(value)
   }
 
-  renderPokemonsList() {
-    const { pokemons, searchString } = this.state
-
-    const pokemonsList = []
+  const renderPokemonList = () => {
+    const pokemonList = []
 
     pokemons.forEach(pokemon => {
       if (!pokemon.name.includes(searchString)) {
         return
       }
 
-      pokemonsList.push(
+      pokemonList.push(
         <li className="pokemons__item" key={pokemon.id}>
           <Pokemon pokemon={pokemon} />
         </li>
       )
     })
 
-    return <ul className="pokemons">{pokemonsList}</ul>
+    return <ul className="pokemons">{pokemonList}</ul>
   }
 
-  render() {
-    const { isLoading, searchString, error } = this.state
-
-    return (
-      <div className="page">
-        {error && <div className="page__error">{error}</div>}
-        <div className="page__search">
-          <Search onChange={this.handleSearchChange} value={searchString} />
-        </div>
-        {isLoading ? <p>Loading...</p> : this.renderPokemonsList()}
+  return (
+    <div className="page">
+      {error && <div className="page__error">{error}</div>}
+      <div className="page__search">
+        <Search onChange={handleSearchChange} value={searchString} />
       </div>
-    )
-  }
+      {isLoading ? <p>Loading...</p> : renderPokemonList()}
+    </div>
+  )
 }
-
-export default App
