@@ -5,7 +5,7 @@
   "author": "Ali Gasymov <alik0211alik@gmail.com> (https://www.gasymov.com/)",
   "homepage": "https://alik0211.github.io/pokedex/",
   "dependencies": {
-    "hardtack": "4.1.0",
+    "hardtack": "5.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-ga": "2.7.0"
