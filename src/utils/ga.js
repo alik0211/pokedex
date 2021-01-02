@@ -1,5 +1,5 @@
-import ReactGA from 'react-ga'
+import ReactGA from 'react-ga';
 
-ReactGA.initialize('UA-112044218-9')
+ReactGA.initialize('UA-112044218-9');
 
-export default ReactGA
+export default ReactGA;

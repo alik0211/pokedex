@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import ga from '../../utils/ga'
+import React, { Component } from 'react';
+import ga from '../../utils/ga';
 
 class Pokemon extends Component {
   render() {
-    const { pokemon } = this.props
+    const { pokemon } = this.props;
 
     return (
       <div className="pokemon">
@@ -14,19 +14,17 @@ class Pokemon extends Component {
             ga.event({
               category: 'pokemon',
               action: 'click',
-              label: pokemon.id
-            })
+              label: pokemon.id,
+            });
           }}
           style={{
-            backgroundImage: `url(${`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-              pokemon.id
-            }.png`})`
+            backgroundImage: `url(${`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`})`,
           }}
         />
         <p className="pokemon__name">{pokemon.name}</p>
       </div>
-    )
+    );
   }
 }
 
-export default Pokemon
+export default Pokemon;
